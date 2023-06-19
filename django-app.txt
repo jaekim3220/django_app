@@ -1,0 +1,4 @@
+server
+username : admin
+email : admin@naver.com
+pw : 1234
