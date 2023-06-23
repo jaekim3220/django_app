@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from . models import Question
 from django.template import loader
 from django.http import Http404
+from django.utils import timezone
 
 # Create your views here.
 
@@ -49,3 +50,9 @@ def results(request, question_id):
 
 def vote(request, question_id):
     return HttpResponse("You're voting on question %s." % question_id)
+
+def get_queryset(self):
+    return Question.objects.filter(pub_date__lte=timezone.now()).order_by("-pub_date")[
+        :5
+    ]
+
